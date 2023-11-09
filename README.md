@@ -1,22 +1,29 @@
 # flutterapirest
 
-- Esse projeto tem como base aplicações de conhecimentos em Dart e Flutter onde se faz uma chamada a API (PlaceHolder: https://jsonplaceholder.typicode.com/) da qual é possível via código escolher se a chamada é via Dio ou via Http onde cada implmenetação está na classe requestPosts que implementa a classe abstrata requestApi com seus respectivos métodos getPostsDio() e getPostsHttp();
+- Esse projeto tem como base aplicações de conhecimentos em Dart e Flutter onde se faz uma chamada a API (PlaceHolder: https://jsonplaceholder.typicode.com/posts) da qual é possível via código escolher se a chamada é via Dio ou via Http onde é usado princípios do SOLID juntamente com o Padrão de Projeto MVC!
 
-- Na classe main.dart temos uma instância de resquestPosts:
+- Linha de código na classe home_page.dart da qual pode ser feita a escolha da chamada a API via Dio ou Http;
 
 ```dart
- RequestPosts posts = RequestPosts();
+ //Using Client Http (HttpClientRepository)
+  // final HomeController _controller = HomeController(DioClientRepository());
+  // Or
+  // Using Client Dio (DioClientRepository)
+  // final HomeController _controller = HomeController(DioClientRepository());
+
+  final HomeController _controller = HomeController(DioClientRepository());
 ```
-- Chamada do método que faz a requisição a API Placeholder via Dio pelo método getPostsDio ou via Http pelo método getPostsHttp;
+- Chamada do método que faz a requisição a API Placeholder;
 
 ```dart
  floatingActionButton: FloatingActionButton(
     onPressed: () async {
-    // Using Dio (getPostsDio) or Http (getPostsHttp)
-    //posts.getPostsDio();
-    posts.getPostsHttp();
+    // get posts call API
+    _controller.getPosts();
     setState(() {});
     },
+    child: const Icon(Icons.send),
+  ),
 ```
 
 
